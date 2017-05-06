@@ -7,11 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BB172D51EBD7CF100C59D3A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172D41EBD7CF100C59D3A /* NetworkError.swift */; };
+		2BB172D81EBD7D2900C59D3A /* CompletionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172D71EBD7D2900C59D3A /* CompletionHandler.swift */; };
+		2BB172DF1EBD802000C59D3A /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172DE1EBD802000C59D3A /* SignUpError.swift */; };
+		2BB172E51EBD80A700C59D3A /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172E41EBD80A700C59D3A /* LoginError.swift */; };
 		2BB172EA1EBD818C00C59D3A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */; };
 		2BB172EE1EBD824200C59D3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BB172ED1EBD824200C59D3A /* Localizable.strings */; };
 		2BB172F11EBD828200C59D3A /* String+mimoiOSCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F01EBD828200C59D3A /* String+mimoiOSCC.swift */; };
 		2BB172F41EBD837600C59D3A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F31EBD837600C59D3A /* AuthenticationViewModel.swift */; };
 		2BB172F81EBD874900C59D3A /* String+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F71EBD874900C59D3A /* String+helper.swift */; };
+		2BB172FE1EBD8B8800C59D3A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172FD1EBD8B8800C59D3A /* Coordinator.swift */; };
+		2BB173001EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172FF1EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift */; };
+		2BB173021EBD905100C59D3A /* MimoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173011EBD905100C59D3A /* MimoError.swift */; };
+		2BB173041EBD90A700C59D3A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173031EBD90A700C59D3A /* LoginService.swift */; };
+		2BB173051EBD90C500C59D3A /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172E61EBD80E600C59D3A /* SignUpService.swift */; };
+		2BB173061EBD90C800C59D3A /* SignUpURLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172D91EBD7E1200C59D3A /* SignUpURLRequestable.swift */; };
+		2BB173071EBD90CC00C59D3A /* LoginURLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172E21EBD808700C59D3A /* LoginURLRequestable.swift */; };
+		2BB173081EBD90CF00C59D3A /* URLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172D21EBD7BCF00C59D3A /* URLRequestable.swift */; };
+		2BB1730A1EBD954A00C59D3A /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173091EBD954A00C59D3A /* AlertHelper.swift */; };
+		2BB1730D1EBD983800C59D3A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1730C1EBD983800C59D3A /* UserInfo.swift */; };
+		2BB1730F1EBD9B5100C59D3A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1730E1EBD9B5100C59D3A /* AppCoordinator.swift */; };
+		2BB173111EBD9F7200C59D3A /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173101EBD9F7200C59D3A /* UserToken.swift */; };
 		2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */; };
 		2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */; };
 		2BF3DEF71E54B79A004DD445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DEF61E54B79A004DD445 /* main.m */; };
@@ -48,11 +64,27 @@
 /* Begin PBXFileReference section */
 		27829E6BCA8E9DAEED47EEF7 /* Pods-MimoiOSCodingChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallengeTests/Pods-MimoiOSCodingChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A002B23F391C3A95BD89B56 /* Pods-MimoiOSCodingChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallenge/Pods-MimoiOSCodingChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		2BB172D21EBD7BCF00C59D3A /* URLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestable.swift; sourceTree = "<group>"; };
+		2BB172D41EBD7CF100C59D3A /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2BB172D71EBD7D2900C59D3A /* CompletionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletionHandler.swift; sourceTree = "<group>"; };
+		2BB172D91EBD7E1200C59D3A /* SignUpURLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpURLRequestable.swift; path = MimoiOSCodingChallenge/Network/SignUp/SignUpURLRequestable.swift; sourceTree = SOURCE_ROOT; };
+		2BB172DE1EBD802000C59D3A /* SignUpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
+		2BB172E21EBD808700C59D3A /* LoginURLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginURLRequestable.swift; sourceTree = "<group>"; };
+		2BB172E41EBD80A700C59D3A /* LoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		2BB172E61EBD80E600C59D3A /* SignUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2BB172ED1EBD824200C59D3A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2BB172F01EBD828200C59D3A /* String+mimoiOSCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+mimoiOSCC.swift"; sourceTree = "<group>"; };
 		2BB172F31EBD837600C59D3A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		2BB172F71EBD874900C59D3A /* String+helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+helper.swift"; sourceTree = "<group>"; };
+		2BB172FD1EBD8B8800C59D3A /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2BB172FF1EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewControllerDelegate.swift; sourceTree = "<group>"; };
+		2BB173011EBD905100C59D3A /* MimoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimoError.swift; sourceTree = "<group>"; };
+		2BB173031EBD90A700C59D3A /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		2BB173091EBD954A00C59D3A /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		2BB1730C1EBD983800C59D3A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		2BB1730E1EBD9B5100C59D3A /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2BB173101EBD9F7200C59D3A /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2BCC6AB71E55A68400585FA1 /* SettingsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAvatar.h; sourceTree = "<group>"; };
 		2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAvatar.m; sourceTree = "<group>"; };
@@ -112,18 +144,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BB172D11EBD7BBA00C59D3A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172E11EBD807600C59D3A /* Login */,
+				2BB172DD1EBD7FFB00C59D3A /* SignUp */,
+				2BB172D21EBD7BCF00C59D3A /* URLRequestable.swift */,
+				2BB172D41EBD7CF100C59D3A /* NetworkError.swift */,
+				2BB173011EBD905100C59D3A /* MimoError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		2BB172D61EBD7D1A00C59D3A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2BB172D71EBD7D2900C59D3A /* CompletionHandler.swift */,
 				2BB172F71EBD874900C59D3A /* String+helper.swift */,
+				2BB173091EBD954A00C59D3A /* AlertHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2BB172DD1EBD7FFB00C59D3A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172D91EBD7E1200C59D3A /* SignUpURLRequestable.swift */,
+				2BB172DE1EBD802000C59D3A /* SignUpError.swift */,
+				2BB172E61EBD80E600C59D3A /* SignUpService.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		2BB172E11EBD807600C59D3A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172E21EBD808700C59D3A /* LoginURLRequestable.swift */,
+				2BB172E41EBD80A700C59D3A /* LoginError.swift */,
+				2BB173031EBD90A700C59D3A /* LoginService.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		2BB172E81EBD817300C59D3A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */,
+				2BB172FF1EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +219,24 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		2BB172FC1EBD8B6B00C59D3A /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172FD1EBD8B8800C59D3A /* Coordinator.swift */,
+				2BB1730E1EBD9B5100C59D3A /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		2BB1730B1EBD982900C59D3A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2BB1730C1EBD983800C59D3A /* UserInfo.swift */,
+				2BB173101EBD9F7200C59D3A /* UserToken.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2BF3DEE91E54B79A004DD445 = {
 			isa = PBXGroup;
 			children = (
@@ -177,10 +262,13 @@
 		2BF3DEF41E54B79A004DD445 /* MimoiOSCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2BB172FC1EBD8B6B00C59D3A /* Coordinators */,
 				2BB172EF1EBD826A00C59D3A /* Application */,
 				2BB172E81EBD817300C59D3A /* ViewControllers */,
 				2BB172F21EBD836500C59D3A /* ViewModels */,
+				2BB1730B1EBD982900C59D3A /* Models */,
 				2BB172D61EBD7D1A00C59D3A /* Helpers */,
+				2BB172D11EBD7BBA00C59D3A /* Network */,
 				2BB172EC1EBD823000C59D3A /* Resources */,
 				2BF3DEF81E54B79A004DD445 /* AppDelegate.h */,
 				2BF3DEF91E54B79A004DD445 /* AppDelegate.m */,
@@ -534,17 +622,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB173041EBD90A700C59D3A /* LoginService.swift in Sources */,
+				2BB173051EBD90C500C59D3A /* SignUpService.swift in Sources */,
 				2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */,
+				2BB1730D1EBD983800C59D3A /* UserInfo.swift in Sources */,
 				2BB172F81EBD874900C59D3A /* String+helper.swift in Sources */,
 				2BB172F11EBD828200C59D3A /* String+mimoiOSCC.swift in Sources */,
 				2BF3DEFD1E54B79A004DD445 /* ViewController.m in Sources */,
 				2BF3DEFA1E54B79A004DD445 /* AppDelegate.m in Sources */,
 				2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */,
+				2BB173081EBD90CF00C59D3A /* URLRequestable.swift in Sources */,
 				2BB172F41EBD837600C59D3A /* AuthenticationViewModel.swift in Sources */,
 				2BF3DEF71E54B79A004DD445 /* main.m in Sources */,
+				2BB173021EBD905100C59D3A /* MimoError.swift in Sources */,
+				2BB1730A1EBD954A00C59D3A /* AlertHelper.swift in Sources */,
 				2BF3DF2D1E54B7DF004DD445 /* SettingsViewController.swift in Sources */,
+				2BB173061EBD90C800C59D3A /* SignUpURLRequestable.swift in Sources */,
+				2BB173111EBD9F7200C59D3A /* UserToken.swift in Sources */,
+				2BB173071EBD90CC00C59D3A /* LoginURLRequestable.swift in Sources */,
+				2BB172E51EBD80A700C59D3A /* LoginError.swift in Sources */,
+				2BB172D51EBD7CF100C59D3A /* NetworkError.swift in Sources */,
+				2BB172FE1EBD8B8800C59D3A /* Coordinator.swift in Sources */,
+				2BB172DF1EBD802000C59D3A /* SignUpError.swift in Sources */,
+				2BB173001EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift in Sources */,
 				2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */,
+				2BB1730F1EBD9B5100C59D3A /* AppCoordinator.swift in Sources */,
 				2BB172EA1EBD818C00C59D3A /* AuthenticationViewController.swift in Sources */,
+				2BB172D81EBD7D2900C59D3A /* CompletionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
