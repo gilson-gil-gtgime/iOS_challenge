@@ -20,6 +20,20 @@ final class SessionHelper: NSObject {
         return userInfo
     }
     
+    static var currentUserToken: UserToken? {
+        guard let userToken = UserToken.persisted else {
+            return nil
+        }
+        return userToken
+    }
+    
+    static var currentAccessToken: String? {
+        guard let userToken = currentUserToken else {
+            return nil
+        }
+        return "\(userToken.token_type.capitalized) \(userToken.access_token)"
+    }
+    
     static func removeSession() {
         UserInfo.depersist()
         UserToken.depersist()

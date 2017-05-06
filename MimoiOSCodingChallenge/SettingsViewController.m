@@ -104,6 +104,13 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.restoreInProgress = NO;
 	self.userSubscribed = NO;
 	[self.tableView reloadData];
+    
+    NSString *currentAccessToken = [SessionHelper currentAccessToken];
+    if (currentAccessToken) {
+        [ProfileService fetchWithToken:currentAccessToken completion:^{
+            [self.tableView reloadData];
+        }];
+    }
 }
 
 

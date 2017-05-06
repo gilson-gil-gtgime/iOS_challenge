@@ -36,7 +36,7 @@ struct UserInfo: Mappable {
     let email_verified: Bool
     
     init(map: Mapper) throws {
-        try _id = map.from("_id")
+        _id = map.optionalFrom("_id") ?? map.optionalFrom("user_id") ?? ""
         try email = map.from("email")
         try email_verified = map.from("email_verified")
     }
