@@ -8,6 +8,7 @@
 #import "SettingsViewController.h"
 #import "SettingsAvatar.h"
 #import "MimoiOSCodingChallenge-Swift.h"
+#import "SettingsViewControllerDelegate.h"
 
 // NOTE: The order of these enums are essential!
 typedef NS_ENUM(NSUInteger, SettingsTableSection) {
@@ -278,10 +279,12 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
         NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:avatar attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-16.f];
         [headerView addConstraint:centerY];
         
+        UserInfoObjC *userInfo = [UserInfoObjC persistedUserInfo];
+        
         UILabel *emailLabel = [[UILabel alloc] init];
         emailLabel.translatesAutoresizingMaskIntoConstraints = NO;
         emailLabel.font = [UIFont systemFontOfSize:self.emailLabelFontSize];
-        emailLabel.text = @"you@getmimo.com";
+        emailLabel.text = userInfo.email ?: @"you@getmimo.com";
         emailLabel.textColor = [UIColor grayColor];
         [headerView addSubview:emailLabel];
         
@@ -554,7 +557,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 }
 
 - (void)logout {
-
+    [SessionHelper removeSession];
+    [self.delegate didLogoutIn:self];
 }
 
 - (void)restoreWithCell:(SettingsTableViewCell *)cell {

@@ -10,6 +10,26 @@ import Mapper
 
 fileprivate let persistedUserKey = "PersistedUserKey"
 
+final class UserInfoObjC: NSObject {
+    private let userInfo: UserInfo
+    
+    var email: String {
+        return userInfo.email
+    }
+    
+    init(userInfo: UserInfo) {
+        self.userInfo = userInfo
+    }
+    
+    static func persistedUserInfo() -> UserInfoObjC? {
+        guard let userInfo = UserInfo.persisted else {
+            return nil
+        }
+        let userInfoObjC = UserInfoObjC(userInfo: userInfo)
+        return userInfoObjC
+    }
+}
+
 struct UserInfo: Mappable {
     let _id: String
     let email: String
@@ -45,6 +65,11 @@ extension UserInfo {
     
     func persist() {
         UserDefaults.standard.set(toJSON(), forKey: persistedUserKey)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func depersist() {
+        UserDefaults.standard.removeObject(forKey: persistedUserKey)
         UserDefaults.standard.synchronize()
     }
 }
