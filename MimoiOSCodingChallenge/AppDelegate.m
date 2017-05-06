@@ -9,7 +9,7 @@
 
 @interface AppDelegate ()
     
-@property(strong, nonatomic) AppCoordinatorObjC *appCoordinator;
+@property(strong, nonatomic) AppCoordinator *appCoordinator;
 
 @end
 
@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.appCoordinator = [[AppCoordinatorObjC alloc] initWithWindow:self.window];
+    self.appCoordinator = [[AppCoordinator alloc] initWithWindow:self.window];
     [self.appCoordinator start];
 	[self.window makeKeyAndVisible];
 	return YES;

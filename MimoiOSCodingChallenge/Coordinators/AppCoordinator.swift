@@ -8,20 +8,12 @@
 
 import Foundation
 
-final class AppCoordinatorObjC: NSObject, Coordinator {
-    private let appCoordinator: AppCoordinator
+final class AppCoordinator: NSObject, Coordinator {
+    let window: UIWindow
     
     init(window: UIWindow) {
-        appCoordinator = AppCoordinator(window: window)
+        self.window = window
     }
-    
-    func start() {
-        appCoordinator.start()
-    }
-}
-
-struct AppCoordinator: Coordinator {
-    let window: UIWindow
     
     func start() {
         if UserToken.persisted != nil {
@@ -38,12 +30,20 @@ struct AppCoordinator: Coordinator {
     }
     
     func showSettings() {
-        window.rootViewController = SettingsViewController()
+        let settingsViewController = SettingsViewController()
+        settingsViewController.delegate = self
+        window.rootViewController = settingsViewController
     }
 }
 
 extension AppCoordinator: AuthenticationViewControllerDelegate {
     func didAuthenticate(in viewController: AuthenticationViewController?) {
         showSettings()
+    }
+}
+
+extension AppCoordinator: SettingsViewControllerDelegate {
+    func didLogout(in settingsViewController: SettingsViewController!) {
+        showAuthentication()
     }
 }

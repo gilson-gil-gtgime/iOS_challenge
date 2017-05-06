@@ -71,8 +71,6 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 @property (nonatomic, strong) UIDatePicker *timePicker;
 @property (nonatomic) BOOL didSetConstraints;
 @property BOOL userSubscribed;
-    
-@property (nonatomic, assign) id<SettingsViewControllerDelegate> delegate;
 @end
 
 @implementation SettingsViewController
