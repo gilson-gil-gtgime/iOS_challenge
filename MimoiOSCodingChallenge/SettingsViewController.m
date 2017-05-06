@@ -273,12 +273,32 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     headerView.backgroundColor = [UIColor clearColor];
     
     if (section == SettingsTableSectionAuthentication) {
-		SettingsAvatar *avatar;
+        UserInfoObjC *userInfo = [UserInfoObjC persistedUserInfo];
+        
+		UIView *avatar;
+        if (userInfo.gravatar) {
+            UIImageView *imageView = [UIImageView newAutoLayoutView];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            avatar = imageView;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:[NSURL URLWithString:userInfo.gravatar] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    if (location) {
+                        NSData *data = [NSData dataWithContentsOfURL:location];
+                        UIImage *image = [UIImage imageWithData:data];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            imageView.image = image;
+                        });
+                    }
+                }];
+                [task resume];
+            });
+        } else {
 #if defined(TARGET_MIMO)
-		avatar = [[GMISettingsAvatar alloc] initWithPremium:self.userSubscribed];
+            avatar = [[GMISettingsAvatar alloc] initWithPremium:self.userSubscribed];
 #else
-		avatar = [[SettingsAvatar alloc] init];
+            avatar = [[SettingsAvatar alloc] init];
 #endif
+        }
 		
         [headerView addSubview:avatar];
         
@@ -286,8 +306,6 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
         [headerView addConstraint:centerX];
         NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:avatar attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-16.f];
         [headerView addConstraint:centerY];
-        
-        UserInfoObjC *userInfo = [UserInfoObjC persistedUserInfo];
         
         UILabel *emailLabel = [[UILabel alloc] init];
         emailLabel.translatesAutoresizingMaskIntoConstraints = NO;
