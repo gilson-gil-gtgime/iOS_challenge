@@ -28,6 +28,8 @@
 		2BB1730D1EBD983800C59D3A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1730C1EBD983800C59D3A /* UserInfo.swift */; };
 		2BB1730F1EBD9B5100C59D3A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1730E1EBD9B5100C59D3A /* AppCoordinator.swift */; };
 		2BB173111EBD9F7200C59D3A /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173101EBD9F7200C59D3A /* UserToken.swift */; };
+		2BB173191EBDAC3200C59D3A /* ProfileURLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173181EBDAC3200C59D3A /* ProfileURLRequestable.swift */; };
+		2BB1731B1EBDAD2900C59D3A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1731A1EBDAD2900C59D3A /* ProfileService.swift */; };
 		2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */; };
 		2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */; };
 		2BF3DEF71E54B79A004DD445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DEF61E54B79A004DD445 /* main.m */; };
@@ -85,6 +87,8 @@
 		2BB1730C1EBD983800C59D3A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2BB1730E1EBD9B5100C59D3A /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2BB173101EBD9F7200C59D3A /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
+		2BB173181EBDAC3200C59D3A /* ProfileURLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileURLRequestable.swift; sourceTree = "<group>"; };
+		2BB1731A1EBDAD2900C59D3A /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2BCC6AB71E55A68400585FA1 /* SettingsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAvatar.h; sourceTree = "<group>"; };
 		2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAvatar.m; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		2BB172D11EBD7BBA00C59D3A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2BB173171EBDAC1D00C59D3A /* Profile */,
 				2BB172E11EBD807600C59D3A /* Login */,
 				2BB172DD1EBD7FFB00C59D3A /* SignUp */,
 				2BB172D21EBD7BCF00C59D3A /* URLRequestable.swift */,
@@ -235,6 +240,15 @@
 				2BB173101EBD9F7200C59D3A /* UserToken.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2BB173171EBDAC1D00C59D3A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2BB173181EBDAC3200C59D3A /* ProfileURLRequestable.swift */,
+				2BB1731A1EBDAD2900C59D3A /* ProfileService.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		2BF3DEE91E54B79A004DD445 = {
@@ -638,6 +652,7 @@
 				2BB1730A1EBD954A00C59D3A /* AlertHelper.swift in Sources */,
 				2BF3DF2D1E54B7DF004DD445 /* SettingsViewController.swift in Sources */,
 				2BB173061EBD90C800C59D3A /* SignUpURLRequestable.swift in Sources */,
+				2BB1731B1EBDAD2900C59D3A /* ProfileService.swift in Sources */,
 				2BB173111EBD9F7200C59D3A /* UserToken.swift in Sources */,
 				2BB173071EBD90CC00C59D3A /* LoginURLRequestable.swift in Sources */,
 				2BB172E51EBD80A700C59D3A /* LoginError.swift in Sources */,
@@ -645,6 +660,7 @@
 				2BB172FE1EBD8B8800C59D3A /* Coordinator.swift in Sources */,
 				2BB172DF1EBD802000C59D3A /* SignUpError.swift in Sources */,
 				2BB173001EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift in Sources */,
+				2BB173191EBDAC3200C59D3A /* ProfileURLRequestable.swift in Sources */,
 				2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */,
 				2BB1730F1EBD9B5100C59D3A /* AppCoordinator.swift in Sources */,
 				2BB172EA1EBD818C00C59D3A /* AuthenticationViewController.swift in Sources */,

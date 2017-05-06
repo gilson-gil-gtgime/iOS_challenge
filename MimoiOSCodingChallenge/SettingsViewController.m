@@ -103,6 +103,11 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.restoreInProgress = NO;
 	self.userSubscribed = NO;
 	[self.tableView reloadData];
+    
+    
+    [ProfileService fetchWithAccess_token:@"" token_type:@"" completion:^{
+        
+    }];
 }
 
 
