@@ -53,7 +53,6 @@ static const CGFloat kSettingsSectionHeaderHeightStandard       = 42.0;
 static const CGFloat kSettingsStandardRowHeight                 = 48.0;
 static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 
-
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -105,6 +104,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 	self.userSubscribed = NO;
 	[self.tableView reloadData];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDarkModeChangeNotification:) name:@"DarkModeNotificationName" object:nil];
+    
     NSString *currentAccessToken = [SessionHelper currentAccessToken];
     if (currentAccessToken) {
         [ProfileService fetchWithToken:currentAccessToken completion:^{
@@ -150,7 +151,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorColor = [UIColor grayColor];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor backgroundColor];
     [self.view addSubview:self.tableView];
 
     NSDictionary *views = @{ @"tableView": self.tableView };
@@ -308,7 +309,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     sectionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     sectionLabel.font = [UIFont systemFontOfSize:self.tableSectionHeaderFontSize];
     sectionLabel.text = self.tableSectionHeaderTitles[@(section)].uppercaseString;
-    sectionLabel.textColor = [UIColor lightGrayColor];
+    sectionLabel.textColor = [UIColor foregroundColor];
     [headerView addSubview:sectionLabel];
     
     NSDictionary *views = @{ @"sectionLabel": sectionLabel };
@@ -332,14 +333,14 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     UILabel *versionLabel = [[UILabel alloc] init];
     versionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     versionLabel.font = [UIFont systemFontOfSize:10.0];
-    versionLabel.textColor = [UIColor lightGrayColor];
+    versionLabel.textColor = [UIColor foregroundColor];
     versionLabel.textAlignment = NSTextAlignmentCenter;
     versionLabel.text = @"Version 1.0";
     
     UILabel *copyrightLabel = [[UILabel alloc] init];
     copyrightLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	copyrightLabel.font = [UIFont systemFontOfSize:10.0];
-    copyrightLabel.textColor = [UIColor lightGrayColor];
+    copyrightLabel.textColor = [UIColor foregroundColor];
     copyrightLabel.textAlignment = NSTextAlignmentCenter;
     copyrightLabel.text = @"Mimo loves you!";
     
@@ -365,7 +366,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)configureCell forRowAtIndexPath:(NSIndexPath *)indexPath {
     SettingsTableViewCell *cell = (SettingsTableViewCell *)configureCell;
     
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor backgroundColor];
     cell.activityIndicator.hidden = YES;
 
 	cell.secondaryLabel.hidden = YES;
@@ -375,7 +376,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 		if (indexPath.row == SettingsTableSectionNotificationRowSwitch) {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.selectionSwitch.hidden = NO;
-			BOOL switchOn = NO;
+			BOOL switchOn = [ThemeHelper darkMode];
 			
 			[cell.selectionSwitch setOn:switchOn animated:NO];
 			cell.delegate = self;
@@ -393,7 +394,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 #if !TARGET_MIMO
 	cell.label.text = NSLocalizedString(@"DownloadMimo", nil);
 #endif
-            cell.label.textColor = [UIColor greenColor];
+            cell.label.textColor = [UIColor foregroundColor];
             cell.label.hidden = NO;
         }
     } else if (indexPath.section == SettingsTableSectionShare && indexPath.row == SettingsTableSectionShareRowAppStore) {
@@ -405,7 +406,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
             cell.label.hidden = YES;
         }
     } else {
-        cell.label.textColor = [UIColor grayColor];
+        cell.label.textColor = [UIColor foregroundColor];
         cell.label.hidden = NO;
     }
 }
@@ -542,6 +543,20 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 
 - (void)handleLoginNotification:(NSNotification *)notification {
 	[self.tableView reloadData];
+}
+    
+- (void)handleDarkModeChangeNotification:(NSNotification *)notification {
+    self.tableView.backgroundColor = [UIColor backgroundColor];
+    [self.tableView reloadData];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+    
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    if ([ThemeHelper darkMode]) {
+        return UIStatusBarStyleLightContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
 }
 
 #pragma mark - Helper
