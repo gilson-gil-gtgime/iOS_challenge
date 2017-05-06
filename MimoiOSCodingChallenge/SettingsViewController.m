@@ -8,6 +8,7 @@
 #import "SettingsViewController.h"
 #import "SettingsAvatar.h"
 #import "MimoiOSCodingChallenge-Swift.h"
+#import "SettingsViewControllerDelegate.h"
 
 // NOTE: The order of these enums are essential!
 typedef NS_ENUM(NSUInteger, SettingsTableSection) {
@@ -51,7 +52,6 @@ static const CGFloat kSettingsSectionHeaderHeightAuthentication = 180.0;
 static const CGFloat kSettingsSectionHeaderHeightStandard       = 42.0;
 static const CGFloat kSettingsStandardRowHeight                 = 48.0;
 static const CGFloat kSettingsSectionFooterHeight               = 48.0;
-
 
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -103,6 +103,23 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.restoreInProgress = NO;
 	self.userSubscribed = NO;
 	[self.tableView reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDarkModeChangeNotification:) name:@"DarkModeNotificationName" object:nil];
+    
+    NSString *currentAccessToken = [SessionHelper currentAccessToken];
+    if (currentAccessToken) {
+        [ProfileService fetchWithToken:currentAccessToken completion:^(BOOL unauthorized) {
+            [self.tableView reloadData];
+            if (unauthorized) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Session expired" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.delegate didLogoutIn:self];
+                }];
+                [alert addAction:action];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+        }];
+    }
 }
 
 
@@ -142,7 +159,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorColor = [UIColor grayColor];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor backgroundColor];
     [self.view addSubview:self.tableView];
 
     NSDictionary *views = @{ @"tableView": self.tableView };
@@ -264,12 +281,32 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     headerView.backgroundColor = [UIColor clearColor];
     
     if (section == SettingsTableSectionAuthentication) {
-		SettingsAvatar *avatar;
+        UserInfoObjC *userInfo = [UserInfoObjC persistedUserInfo];
+        
+		UIView *avatar;
+        if (userInfo.gravatar) {
+            UIImageView *imageView = [UIImageView newAutoLayoutView];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            avatar = imageView;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:[NSURL URLWithString:userInfo.gravatar] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    if (location) {
+                        NSData *data = [NSData dataWithContentsOfURL:location];
+                        UIImage *image = [UIImage imageWithData:data];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            imageView.image = image;
+                        });
+                    }
+                }];
+                [task resume];
+            });
+        } else {
 #if defined(TARGET_MIMO)
-		avatar = [[GMISettingsAvatar alloc] initWithPremium:self.userSubscribed];
+            avatar = [[GMISettingsAvatar alloc] initWithPremium:self.userSubscribed];
 #else
-		avatar = [[SettingsAvatar alloc] init];
+            avatar = [[SettingsAvatar alloc] init];
 #endif
+        }
 		
         [headerView addSubview:avatar];
         
@@ -281,7 +318,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
         UILabel *emailLabel = [[UILabel alloc] init];
         emailLabel.translatesAutoresizingMaskIntoConstraints = NO;
         emailLabel.font = [UIFont systemFontOfSize:self.emailLabelFontSize];
-        emailLabel.text = @"you@getmimo.com";
+        emailLabel.text = userInfo.email ?: @"you@getmimo.com";
         emailLabel.textColor = [UIColor grayColor];
         [headerView addSubview:emailLabel];
         
@@ -298,7 +335,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     sectionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     sectionLabel.font = [UIFont systemFontOfSize:self.tableSectionHeaderFontSize];
     sectionLabel.text = self.tableSectionHeaderTitles[@(section)].uppercaseString;
-    sectionLabel.textColor = [UIColor lightGrayColor];
+    sectionLabel.textColor = [UIColor foregroundColor];
     [headerView addSubview:sectionLabel];
     
     NSDictionary *views = @{ @"sectionLabel": sectionLabel };
@@ -322,14 +359,14 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     UILabel *versionLabel = [[UILabel alloc] init];
     versionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     versionLabel.font = [UIFont systemFontOfSize:10.0];
-    versionLabel.textColor = [UIColor lightGrayColor];
+    versionLabel.textColor = [UIColor foregroundColor];
     versionLabel.textAlignment = NSTextAlignmentCenter;
     versionLabel.text = @"Version 1.0";
     
     UILabel *copyrightLabel = [[UILabel alloc] init];
     copyrightLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	copyrightLabel.font = [UIFont systemFontOfSize:10.0];
-    copyrightLabel.textColor = [UIColor lightGrayColor];
+    copyrightLabel.textColor = [UIColor foregroundColor];
     copyrightLabel.textAlignment = NSTextAlignmentCenter;
     copyrightLabel.text = @"Mimo loves you!";
     
@@ -355,7 +392,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)configureCell forRowAtIndexPath:(NSIndexPath *)indexPath {
     SettingsTableViewCell *cell = (SettingsTableViewCell *)configureCell;
     
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor backgroundColor];
     cell.activityIndicator.hidden = YES;
 
 	cell.secondaryLabel.hidden = YES;
@@ -365,7 +402,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 		if (indexPath.row == SettingsTableSectionNotificationRowSwitch) {
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.selectionSwitch.hidden = NO;
-			BOOL switchOn = NO;
+			BOOL switchOn = [ThemeHelper darkMode];
 			
 			[cell.selectionSwitch setOn:switchOn animated:NO];
 			cell.delegate = self;
@@ -383,7 +420,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 #if !TARGET_MIMO
 	cell.label.text = NSLocalizedString(@"DownloadMimo", nil);
 #endif
-            cell.label.textColor = [UIColor greenColor];
+            cell.label.textColor = [UIColor foregroundColor];
             cell.label.hidden = NO;
         }
     } else if (indexPath.section == SettingsTableSectionShare && indexPath.row == SettingsTableSectionShareRowAppStore) {
@@ -395,7 +432,7 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
             cell.label.hidden = YES;
         }
     } else {
-        cell.label.textColor = [UIColor grayColor];
+        cell.label.textColor = [UIColor foregroundColor];
         cell.label.hidden = NO;
     }
 }
@@ -533,6 +570,20 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 - (void)handleLoginNotification:(NSNotification *)notification {
 	[self.tableView reloadData];
 }
+    
+- (void)handleDarkModeChangeNotification:(NSNotification *)notification {
+    self.tableView.backgroundColor = [UIColor backgroundColor];
+    [self.tableView reloadData];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+    
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    if ([ThemeHelper darkMode]) {
+        return UIStatusBarStyleLightContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
+}
 
 #pragma mark - Helper
 
@@ -554,7 +605,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 }
 
 - (void)logout {
-
+    [SessionHelper removeSession];
+    [self.delegate didLogoutIn:self];
 }
 
 - (void)restoreWithCell:(SettingsTableViewCell *)cell {

@@ -5,8 +5,11 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
+#import "MimoiOSCodingChallenge-Swift.h"
 
 @interface AppDelegate ()
+    
+@property(strong, nonatomic) AppCoordinator *appCoordinator;
 
 @end
 
@@ -16,8 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	SettingsViewController *vc = [[SettingsViewController alloc] init];
-	self.window.rootViewController = vc;
+    self.appCoordinator = [[AppCoordinator alloc] initWithWindow:self.window];
+    [self.appCoordinator start];
 	[self.window makeKeyAndVisible];
 	return YES;
 }
