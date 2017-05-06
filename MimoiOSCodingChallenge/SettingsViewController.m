@@ -8,6 +8,7 @@
 #import "SettingsViewController.h"
 #import "SettingsAvatar.h"
 #import "MimoiOSCodingChallenge-Swift.h"
+#import "SettingsViewControllerDelegate.h"
 
 // NOTE: The order of these enums are essential!
 typedef NS_ENUM(NSUInteger, SettingsTableSection) {
@@ -70,6 +71,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 @property (nonatomic, strong) UIDatePicker *timePicker;
 @property (nonatomic) BOOL didSetConstraints;
 @property BOOL userSubscribed;
+    
+@property (nonatomic, assign) id<SettingsViewControllerDelegate> delegate;
 @end
 
 @implementation SettingsViewController
@@ -554,7 +557,8 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
 }
 
 - (void)logout {
-
+    [SessionHelper removeSession];
+    [self.delegate didLogoutIn:self];
 }
 
 - (void)restoreWithCell:(SettingsTableViewCell *)cell {

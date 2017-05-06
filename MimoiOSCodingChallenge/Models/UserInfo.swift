@@ -47,4 +47,9 @@ extension UserInfo {
         UserDefaults.standard.set(toJSON(), forKey: persistedUserKey)
         UserDefaults.standard.synchronize()
     }
+    
+    static func depersist() {
+        UserDefaults.standard.removeObject(forKey: persistedUserKey)
+        UserDefaults.standard.synchronize()
+    }
 }
