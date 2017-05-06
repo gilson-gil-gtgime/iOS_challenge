@@ -58,6 +58,8 @@ final class AuthenticationViewController: UIViewController {
     
     fileprivate var authenticationViewModel = AuthenticationViewModel()
     
+    var delegate: AuthenticationViewControllerDelegate?
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setUp()
@@ -110,11 +112,35 @@ final class AuthenticationViewController: UIViewController {
 // MARK: - Actions
 extension AuthenticationViewController {
     func loginTapped() {
-        
+        authenticationViewModel.login(email: emailTextField.text, password: passwordTextField.text) { [weak self] callback in
+            do {
+                try callback()
+                self?.delegate?.didAuthenticate(in: self)
+            } catch let error as LoginError {
+                switch error {
+                case .accountNotFound:
+                    AlertHelper.alert(title: String.warning, message: error.localizedDescription, in: self)
+                }
+            } catch {
+                AlertHelper.alert(title: String.warning, message: error.localizedDescription, in: self)
+            }
+        }
     }
     
     func signupTapped() {
-        
+        authenticationViewModel.signup(email: emailTextField.text, password: passwordTextField.text) { [weak self] callback in
+            do {
+                try callback()
+                self?.delegate?.didAuthenticate(in: self)
+            } catch let error as SignUpError {
+                switch error {
+                case .accountFound:
+                    AlertHelper.alert(title: String.warning, message: error.localizedDescription, in: self)
+                }
+            } catch {
+                AlertHelper.alert(title: String.warning, message: error.localizedDescription, in: self)
+            }
+        }
     }
 }
 

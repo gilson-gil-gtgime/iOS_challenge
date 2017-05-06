@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.0.1)
+  - ModelMapper (6.0.0)
   - PureLayout (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
+  - ModelMapper (~> 6.0.0)
   - PureLayout (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
 
-PODFILE CHECKSUM: b4529b7517982800b94dac01475c4736f90a63d5
+PODFILE CHECKSUM: e6ec4cbb5f979aedcaea17a0f3d988251e6de51e
 
 COCOAPODS: 1.2.1

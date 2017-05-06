@@ -9,6 +9,9 @@
 import Foundation
 
 extension String {
+    static let warning = NSLocalizedString("WARNING", comment: "")
+    static let ok = NSLocalizedString("OK", comment: "")
+    
     struct Authentication {
         struct Placeholder {
             static let email = NSLocalizedString("AUTHENTICATION_PLACEHOLDER_EMAIL", comment: "")
@@ -17,6 +20,10 @@ extension String {
         struct ButtonTitle {
             static let login = NSLocalizedString("AUTHENTICATION_BUTTONTITLE_LOGIN", comment: "")
             static let signup = NSLocalizedString("AUTHENTICATION_BUTTONTITLE_SIGNUP", comment: "")
+        }
+        struct Error {
+            static let login = NSLocalizedString("AUTHENTICATION_ERROR_LOGIN", comment: "")
+            static let signup = NSLocalizedString("AUTHENTICATION_ERROR_SIGNUP", comment: "")
         }
     }
 }

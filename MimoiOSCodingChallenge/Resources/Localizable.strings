@@ -6,8 +6,14 @@
   Copyright © 2017 Mimohello GmbH. All rights reserved.
 */
 
+"WARNING" = "Warning";
+"OK" = "Ok";
+
 "AUTHENTICATION_PLACEHOLDER_EMAIL" = "Email";
 "AUTHENTICATION_PLACEHOLDER_PASSWORD" = "Password";
 
 "AUTHENTICATION_BUTTONTITLE_LOGIN" = "Login";
 "AUTHENTICATION_BUTTONTITLE_SIGNUP" = "Sign Up";
+
+"AUTHENTICATION_ERROR_LOGIN" = "Account not found";
+"AUTHENTICATION_ERROR_SIGNUP" = "Account already exists";
