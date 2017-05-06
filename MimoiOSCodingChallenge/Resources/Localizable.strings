@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MimoiOSCodingChallenge
+
+  Created by Gilson Gil on 06/05/17.
+  Copyright © 2017 Mimohello GmbH. All rights reserved.
+*/
+
+"AUTHENTICATION_PLACEHOLDER_EMAIL" = "Email";
+"AUTHENTICATION_PLACEHOLDER_PASSWORD" = "Password";
+
+"AUTHENTICATION_BUTTONTITLE_LOGIN" = "Login";
+"AUTHENTICATION_BUTTONTITLE_SIGNUP" = "Sign Up";
