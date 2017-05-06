@@ -30,6 +30,7 @@
 		2BB173111EBD9F7200C59D3A /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173101EBD9F7200C59D3A /* UserToken.swift */; };
 		2BB173191EBDAC3200C59D3A /* ProfileURLRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173181EBDAC3200C59D3A /* ProfileURLRequestable.swift */; };
 		2BB1731B1EBDAD2900C59D3A /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1731A1EBDAD2900C59D3A /* ProfileService.swift */; };
+		2BB173161EBDA7EC00C59D3A /* SessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB173151EBDA7EC00C59D3A /* SessionHelper.swift */; };
 		2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */; };
 		2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */; };
 		2BF3DEF71E54B79A004DD445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DEF61E54B79A004DD445 /* main.m */; };
@@ -89,6 +90,8 @@
 		2BB173101EBD9F7200C59D3A /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		2BB173181EBDAC3200C59D3A /* ProfileURLRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileURLRequestable.swift; sourceTree = "<group>"; };
 		2BB1731A1EBDAD2900C59D3A /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		2BB173121EBDA65C00C59D3A /* SettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewControllerDelegate.h; sourceTree = "<group>"; };
+		2BB173151EBDA7EC00C59D3A /* SessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHelper.swift; sourceTree = "<group>"; };
 		2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2BCC6AB71E55A68400585FA1 /* SettingsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAvatar.h; sourceTree = "<group>"; };
 		2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAvatar.m; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 				2BB172D71EBD7D2900C59D3A /* CompletionHandler.swift */,
 				2BB172F71EBD874900C59D3A /* String+helper.swift */,
 				2BB173091EBD954A00C59D3A /* AlertHelper.swift */,
+				2BB173151EBDA7EC00C59D3A /* SessionHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -290,6 +294,7 @@
 				2BF3DEFC1E54B79A004DD445 /* ViewController.m */,
 				2BF3DF291E54B7DF004DD445 /* SettingsViewController.h */,
 				2BF3DF2A1E54B7DF004DD445 /* SettingsViewController.m */,
+				2BB173121EBDA65C00C59D3A /* SettingsViewControllerDelegate.h */,
 				2BF3DF2B1E54B7DF004DD445 /* SettingsViewController.swift */,
 				2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */,
 				2BCC6AB71E55A68400585FA1 /* SettingsAvatar.h */,
@@ -659,6 +664,7 @@
 				2BB172D51EBD7CF100C59D3A /* NetworkError.swift in Sources */,
 				2BB172FE1EBD8B8800C59D3A /* Coordinator.swift in Sources */,
 				2BB172DF1EBD802000C59D3A /* SignUpError.swift in Sources */,
+				2BB173161EBDA7EC00C59D3A /* SessionHelper.swift in Sources */,
 				2BB173001EBD8C5E00C59D3A /* AuthenticationViewControllerDelegate.swift in Sources */,
 				2BB173191EBDAC3200C59D3A /* ProfileURLRequestable.swift in Sources */,
 				2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */,

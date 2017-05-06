@@ -44,4 +44,9 @@ extension UserToken {
         UserDefaults.standard.set(toJSON(), forKey: persistedUserTokenKey)
         UserDefaults.standard.synchronize()
     }
+    
+    static func depersist() {
+        UserDefaults.standard.removeObject(forKey: persistedUserTokenKey)
+        UserDefaults.standard.synchronize()
+    }
 }

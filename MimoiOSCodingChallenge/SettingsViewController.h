@@ -5,6 +5,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@protocol SettingsViewControllerDelegate;
 
+@interface SettingsViewController : UIViewController
+    
+@property (nonatomic, assign) id<SettingsViewControllerDelegate> delegate;
+    
 @end
