@@ -108,8 +108,16 @@ static const CGFloat kSettingsSectionFooterHeight               = 48.0;
     
     NSString *currentAccessToken = [SessionHelper currentAccessToken];
     if (currentAccessToken) {
-        [ProfileService fetchWithToken:currentAccessToken completion:^{
+        [ProfileService fetchWithToken:currentAccessToken completion:^(BOOL unauthorized) {
             [self.tableView reloadData];
+            if (unauthorized) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Session expired" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.delegate didLogoutIn:self];
+                }];
+                [alert addAction:action];
+                [self presentViewController:alert animated:true completion:nil];
+            }
         }];
     }
 }

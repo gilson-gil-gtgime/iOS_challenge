@@ -10,7 +10,7 @@ import Alamofire
 
 final class ProfileService: NSObject {
     static func fetch(token: String,
-                      completion: @escaping () -> ()) {
+                      completion: @escaping (_ unauthorized: Bool) -> ()) {
         ProfileURLRequestable(token: token)
             .request { callback in
                 do {
@@ -20,9 +20,14 @@ final class ProfileService: NSObject {
                     }
                     let userInfo = UserInfo.from(json)
                     userInfo?.persist()
-                    completion()
+                    completion(false)
+                } catch let error as NetworkError {
+                    switch error {
+                    case .authFailed:
+                        completion(true)
+                    }
                 } catch {
-                    completion()
+                    completion(false)
                 }
         }
     }
