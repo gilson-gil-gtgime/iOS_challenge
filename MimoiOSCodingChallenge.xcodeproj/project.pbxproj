@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BB172EA1EBD818C00C59D3A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */; };
+		2BB172EE1EBD824200C59D3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BB172ED1EBD824200C59D3A /* Localizable.strings */; };
+		2BB172F11EBD828200C59D3A /* String+mimoiOSCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F01EBD828200C59D3A /* String+mimoiOSCC.swift */; };
+		2BB172F41EBD837600C59D3A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F31EBD837600C59D3A /* AuthenticationViewModel.swift */; };
+		2BB172F81EBD874900C59D3A /* String+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB172F71EBD874900C59D3A /* String+helper.swift */; };
 		2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */; };
 		2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */; };
 		2BF3DEF71E54B79A004DD445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3DEF61E54B79A004DD445 /* main.m */; };
@@ -43,6 +48,11 @@
 /* Begin PBXFileReference section */
 		27829E6BCA8E9DAEED47EEF7 /* Pods-MimoiOSCodingChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallengeTests/Pods-MimoiOSCodingChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A002B23F391C3A95BD89B56 /* Pods-MimoiOSCodingChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimoiOSCodingChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimoiOSCodingChallenge/Pods-MimoiOSCodingChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		2BB172ED1EBD824200C59D3A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		2BB172F01EBD828200C59D3A /* String+mimoiOSCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+mimoiOSCC.swift"; sourceTree = "<group>"; };
+		2BB172F31EBD837600C59D3A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		2BB172F71EBD874900C59D3A /* String+helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+helper.swift"; sourceTree = "<group>"; };
 		2BCC6AB51E55A55A00585FA1 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2BCC6AB71E55A68400585FA1 /* SettingsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAvatar.h; sourceTree = "<group>"; };
 		2BCC6AB81E55A68400585FA1 /* SettingsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAvatar.m; sourceTree = "<group>"; };
@@ -102,6 +112,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BB172D61EBD7D1A00C59D3A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172F71EBD874900C59D3A /* String+helper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2BB172E81EBD817300C59D3A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172E91EBD818C00C59D3A /* AuthenticationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2BB172EC1EBD823000C59D3A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172ED1EBD824200C59D3A /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BB172EF1EBD826A00C59D3A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172F01EBD828200C59D3A /* String+mimoiOSCC.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2BB172F21EBD836500C59D3A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2BB172F31EBD837600C59D3A /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		2BF3DEE91E54B79A004DD445 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +177,11 @@
 		2BF3DEF41E54B79A004DD445 /* MimoiOSCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2BB172EF1EBD826A00C59D3A /* Application */,
+				2BB172E81EBD817300C59D3A /* ViewControllers */,
+				2BB172F21EBD836500C59D3A /* ViewModels */,
+				2BB172D61EBD7D1A00C59D3A /* Helpers */,
+				2BB172EC1EBD823000C59D3A /* Resources */,
 				2BF3DEF81E54B79A004DD445 /* AppDelegate.h */,
 				2BF3DEF91E54B79A004DD445 /* AppDelegate.m */,
 				2BF3DEFB1E54B79A004DD445 /* ViewController.h */,
@@ -315,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BF3DF051E54B79A004DD445 /* LaunchScreen.storyboard in Resources */,
+				2BB172EE1EBD824200C59D3A /* Localizable.strings in Resources */,
 				2BF3DF021E54B79A004DD445 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,12 +535,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCC6AB91E55A68400585FA1 /* SettingsAvatar.m in Sources */,
+				2BB172F81EBD874900C59D3A /* String+helper.swift in Sources */,
+				2BB172F11EBD828200C59D3A /* String+mimoiOSCC.swift in Sources */,
 				2BF3DEFD1E54B79A004DD445 /* ViewController.m in Sources */,
 				2BF3DEFA1E54B79A004DD445 /* AppDelegate.m in Sources */,
 				2BCC6AB61E55A55A00585FA1 /* SettingsTableViewCell.swift in Sources */,
+				2BB172F41EBD837600C59D3A /* AuthenticationViewModel.swift in Sources */,
 				2BF3DEF71E54B79A004DD445 /* main.m in Sources */,
 				2BF3DF2D1E54B7DF004DD445 /* SettingsViewController.swift in Sources */,
 				2BF3DF2C1E54B7DF004DD445 /* SettingsViewController.m in Sources */,
+				2BB172EA1EBD818C00C59D3A /* AuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
