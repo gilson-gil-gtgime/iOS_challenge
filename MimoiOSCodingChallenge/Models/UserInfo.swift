@@ -17,6 +17,13 @@ final class UserInfoObjC: NSObject {
         return userInfo.email
     }
     
+    var gravatar: String? {
+        guard let gravatar = userInfo.gravatar, gravatar.characters.count > 0 else {
+            return nil
+        }
+        return gravatar
+    }
+    
     init(userInfo: UserInfo) {
         self.userInfo = userInfo
     }
@@ -34,18 +41,21 @@ struct UserInfo: Mappable {
     let _id: String
     let email: String
     let email_verified: Bool
+    let gravatar: String?
     
     init(map: Mapper) throws {
         _id = map.optionalFrom("_id") ?? map.optionalFrom("user_id") ?? ""
         try email = map.from("email")
         try email_verified = map.from("email_verified")
+        gravatar = map.optionalFrom("picture")
     }
     
     func toJSON() -> [AnyHashable: Any] {
         let json: [AnyHashable: Any] = [
             "_id": _id,
             "email": email,
-            "email_verified": email_verified
+            "email_verified": email_verified,
+            "picture": gravatar ?? ""
         ]
         return json
     }
