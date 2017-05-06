@@ -23,7 +23,8 @@ struct LoginURLRequestable: URLRequestableProtocol {
     var parameters: Parameters? {
         return ["username": email,
                 "password": password,
-                "grant_type": "password"]
+                "grant_type": "password",
+                "scope": "openid"]
     }
     
     var headers: Parameters? {

@@ -9,8 +9,7 @@
 import Alamofire
 
 struct ProfileURLRequestable: URLRequestableProtocol {
-    let access_token: String
-    let token_type: String
+    let token: String
     
     var method: HTTPMethod {
         return .get
@@ -26,11 +25,11 @@ struct ProfileURLRequestable: URLRequestableProtocol {
     
     var headers: Parameters? {
         return [
-            "Authorization": "\(token_type) \(access_token)"
+            "Authorization": token
         ]
     }
     
     var encoding: ParameterEncoding {
-        return JSONEncoding.default
+        return URLEncoding.default
     }
 }

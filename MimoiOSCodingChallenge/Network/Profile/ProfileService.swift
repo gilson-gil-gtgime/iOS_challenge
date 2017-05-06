@@ -9,19 +9,17 @@
 import Alamofire
 
 final class ProfileService: NSObject {
-    static func fetch(access_token: String,
-                      token_type: String,
+    static func fetch(token: String,
                       completion: @escaping () -> ()) {
-        ProfileURLRequestable(access_token: access_token,
-                              token_type: token_type)
+        ProfileURLRequestable(token: token)
             .request { callback in
                 do {
                     let response = try callback()
                     guard let json = response.result.value as? NSDictionary else {
                         return
                     }
-                    let userToken = UserToken.from(json)
-                    userToken?.persist()
+                    let userInfo = UserInfo.from(json)
+                    userInfo?.persist()
                     completion()
                 } catch {
                     completion()
