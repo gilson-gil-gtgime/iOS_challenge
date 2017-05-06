@@ -8,6 +8,8 @@
 #import "MimoiOSCodingChallenge-Swift.h"
 
 @interface AppDelegate ()
+    
+@property(strong, nonatomic) AppCoordinatorObjC *appCoordinator;
 
 @end
 
@@ -17,8 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	AuthenticationViewController *vc = [[AuthenticationViewController alloc] init];
-	self.window.rootViewController = vc;
+    self.appCoordinator = [[AppCoordinatorObjC alloc] initWithWindow:self.window];
+    [self.appCoordinator start];
 	[self.window makeKeyAndVisible];
 	return YES;
 }
